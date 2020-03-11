@@ -16,43 +16,110 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
             android:gravity="center_horizontal">
             <ImageView
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:id="@+id/miniCardImage"
-                android:scaleType="centerCrop"/>
-            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:id="@+id/miniCardImage"
+                android:scaleType="centerCrop"
+                android:src="@drawable/corona"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom"
+                android:layout_marginBottom="20dp">
+            <TextView
+                android:paddingStart="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:id="@+id/miniCardText"
-                android:textAlignment="center"
-                android:text="DSDGRGR"/>
-        </LinearLayout>
+                android:textAlignment="viewEnd"
+                android:text="This is the news Today"
+                android:background="#2c3e50"
+                android:textColor="#fff"
+                android:fontFamily="@font/abril_fatface"
+                android:padding="5dp"
+                android:textSize="20sp"/>
+            </LinearLayout>
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/bigCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/minicard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"
+
+        app:cardCornerRadius="20dp">
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/bigImage"
-            android:scaleType="centerCrop"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:gravity="end">
+            <ImageView
+                android:id="@+id/bigImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/corona" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="end"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:textColor="#2c3e50"
+                        android:fontFamily="@font/abril_fatface"
+                        android:padding="5dp"
+                        android:text="RGEWR"
+                        android:textAlignment="viewEnd"
+                        android:textSize="30sp" />
+                </LinearLayout>
+            </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textAlignment="viewEnd"
+                android:text="10/10/2020"
+                android:id="@+id/bigDate"/>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <me.biubiubiu.justifytext.library.JustifyTextView
+                    android:id="@+id/bigNews"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:breakStrategy="balanced"
+                    android:fontFamily="@font/allan"
+                    android:justificationMode="inter_word"
+                    android:text="Attention is turning with increasing urgency to the need to raise the $1.5tn needed to finance the Paris Climate Agreement. At the core of this is a new Global Green Bond Partnership, launched with help from the World Bank to support the efforts of cities, businesses and financial institutions to accelerate the issuance of green bonds. We find out how the bonds scheme will work."
+                    android:textColor="#2c3e50" />
+                <view
+                    android:layout_width="2dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:background="#2c3e50"/>
+            </RelativeLayout>
+
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

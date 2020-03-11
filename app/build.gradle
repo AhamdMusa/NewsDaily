@@ -40,5 +40,6 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-annotations:2.9.8'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.8'
     implementation 'com.android.volley:volley:1.1.1'
+    compile 'me.biubiubiu.justifytext:library:1.1'
 
 }
