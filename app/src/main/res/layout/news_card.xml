@@ -4,8 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
-    android:paddingEnd="5dp">
+    android:layout_margin="5dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -55,7 +54,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:visibility="gone"
-
         app:cardCornerRadius="20dp">
         <LinearLayout
             android:layout_width="wrap_content"
@@ -80,6 +78,7 @@
                     android:layout_margin="10dp">
 
                     <TextView
+                        android:id="@+id/bigTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="#fff"
@@ -91,13 +90,25 @@
                         android:textSize="30sp" />
                 </LinearLayout>
             </RelativeLayout>
-            <TextView
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:textAlignment="viewEnd"
                 android:text="10/10/2020"
                 android:id="@+id/bigDate"/>
+                <ImageView
+                    android:layout_marginRight="20dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_share_black_24dp"
+                    android:id="@+id/shear"/>
+            </LinearLayout>
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
@@ -119,8 +130,6 @@
                     android:layout_marginRight="10dp"
                     android:background="#2c3e50"/>
             </RelativeLayout>
-
-
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
