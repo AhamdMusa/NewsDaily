@@ -12,7 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.brainybrains.newsdaily.R;
 import com.brainybrains.newsdaily.fromAPI.News;
+import com.brainybrains.newsdaily.jSON.JSONplaceHolder;
 import com.squareup.picasso.Picasso;
+
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
@@ -47,6 +51,10 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
             bigTitel=itemView.findViewById(R.id.bigTitle);
             date=itemView.findViewById(R.id.bigDate);
             bigNews=itemView.findViewById(R.id.bigNews);
+
+            Retrofit retrofit = new Retrofit.Builder().baseUrl("http://itechnotion.in/wp-news/wp-json/wp/v2/posts?fbclid=IwAR35m3v0sPfHL8msHxdI2zskrjX7KxzAQSc8iTr8PTzwLUkkPKW1DnTY454").addConverterFactory(GsonConverterFactory.create()).build();
+            JSONplaceHolder jsonPlaceHolder = retrofit.create(JSONplaceHolder.class);
+
         }
         public void bind(News news) {
 
