@@ -109,27 +109,22 @@
                     android:src="@drawable/ic_share_black_24dp"
                     android:id="@+id/shear"/>
             </LinearLayout>
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
 
-                <me.biubiubiu.justifytext.library.JustifyTextView
+                <TextView
                     android:id="@+id/bigNews"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:breakStrategy="balanced"
-                    android:fontFamily="@font/allan"
                     android:justificationMode="inter_word"
                     android:text="Attention is turning with increasing urgency to the need to raise the $1.5tn needed to finance the Paris Climate Agreement. At the core of this is a new Global Green Bond Partnership, launched with help from the World Bank to support the efforts of cities, businesses and financial institutions to accelerate the issuance of green bonds. We find out how the bonds scheme will work."
                     android:textColor="#2c3e50" />
-                <view
+                <!--<view
                     android:layout_width="2dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="10dp"
-                    android:background="#2c3e50"/>
-            </RelativeLayout>
+                    android:background="#2c3e50"/>-->
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
