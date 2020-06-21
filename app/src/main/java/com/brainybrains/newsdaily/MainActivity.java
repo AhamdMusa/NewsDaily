@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.brainybrains.newsdaily.adapter.NewsAdapter;
+import com.brainybrains.newsdaily.database.DatabaseOpenHelper;
 import com.brainybrains.newsdaily.fromAPI.Article;
 import com.brainybrains.newsdaily.fromAPI.News;
 import com.brainybrains.newsdaily.jSON.ApiClient;
@@ -26,15 +27,28 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
     private RecyclerView newsRV;
     private NewsAdapter newsAdapter;
+    private DatabaseOpenHelper helper;
     private List<Article> articles=new ArrayList<>();
+    int i=0,databaseID;
+    String type;
+    String from;
+    String to;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Bundle extras = getIntent().getExtras();
+        if(extras != null) {
+            type= extras.getString("type");
+            from= extras.getString("from");
+            to= extras.getString("to");
+        }
+
 
         newsRV=findViewById(R.id.newsRV);
+        helper=new DatabaseOpenHelper(this);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(MainActivity.this);
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         newsRV.setLayoutManager(linearLayoutManager);
@@ -47,13 +61,14 @@ public class MainActivity extends AppCompatActivity {
     private void getNewses() {
         String url=buildUrl();
         JSONplaceHolder jsoNplaceHolder= ApiClient.builder().create(JSONplaceHolder.class);
-        jsoNplaceHolder.getNewses().enqueue(new Callback<News>() {
+        jsoNplaceHolder.getNewses(url).enqueue(new Callback<News>() {
             @Override
             public void onResponse(Call<News> call, Response<News> response) {
                 articles=response.body().getArticles();
                 newsAdapter=new NewsAdapter(MainActivity.this,articles);
                 newsRV.setAdapter(newsAdapter);
                 newsAdapter.notifyDataSetChanged();
+
             }
 
             @Override
@@ -79,7 +94,30 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String buildUrl() {
-        StringBuilder urlString = new StringBuilder("everything?q=coronavirus&language=en&from=2020-02-20&sortBy=publishedAt&apiKey=85f7a4bf8b714e4dbab47ec7bc08ae61");
-        return urlString.toString();
+        if (type!=null){
+            if (from==null&&to==null){
+            StringBuilder urlString = new StringBuilder("everything?q="+type+"&apiKey=85f7a4bf8b714e4dbab47ec7bc08ae61");
+            return urlString.toString();
+            }
+            else if (from!=null&&to==null) {
+                StringBuilder urlString = new StringBuilder("everything?q="+type+"&from="+from+"&to="+to+"apiKey=85f7a4bf8b714e4dbab47ec7bc08ae61");       /*rvdynirysrysruymlsOTOTOTOTOTOTOTOTOTOn,mb,b,fb,xdb*/
+                return urlString.toString();
+            }
+            else if (from==null&&to!=null) {
+                StringBuilder urlString = new StringBuilder("everything?q="+type+"&from="+from+"&to="+to+"apiKey=85f7a4bf8b714e4dbab47ec7bc08ae61");       /*rvdynirysrysruymlsOTOTOTOTOTOTOTOTOTOn,mb,b,fb,xdb*/
+                return urlString.toString();
+            }
+            else  {
+                StringBuilder urlString = new StringBuilder("everything?q="+type+"&from="+from+"&to="+to+"apiKey=85f7a4bf8b714e4dbab47ec7bc08ae61");
+                return urlString.toString();
+            }
+        }
+        else
+        {
+            StringBuilder urlString = new StringBuilder("everything?apiKey=85f7a4bf8b714e4dbab47ec7bc08ae61");
+            return urlString.toString();
+        }
+
+
     }
 }

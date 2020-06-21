@@ -44,7 +44,7 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-annotations:2.9.8'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.8'
     implementation 'com.android.volley:volley:1.1.1'
-    compile 'me.biubiubiu.justifytext:library:1.1'
+    implementation 'me.biubiubiu.justifytext:library:1.1'
     implementation 'com.github.bumptech.glide:glide:4.7.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
     implementation 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -13,6 +14,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.brainybrains.newsdaily.R;
+import com.brainybrains.newsdaily.database.DatabaseOpenHelper;
 import com.brainybrains.newsdaily.fromAPI.Article;
 import com.brainybrains.newsdaily.fromAPI.News;
 import com.brainybrains.newsdaily.jSON.JSONplaceHolder;
@@ -70,6 +72,10 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         private TextView miniTitel, bigTitel, date, bigNews;
         private CardView minicard, bigcard;
 
+        private DatabaseOpenHelper helper;
+        private List<Article> articles=new ArrayList<>();
+        int i=0,databaseID;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             miniImage=itemView.findViewById(R.id.miniCardImage);
@@ -86,7 +92,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
         }
         public void bind(Article article) {
-
+            helper=new DatabaseOpenHelper(context);
             miniTitel.setText(article.getTitle());
             bigTitel.setText(article.getTitle());
             bigNews.setText(article.getDescription());
@@ -99,6 +105,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
                     .load(photoURL)
                     .error(R.drawable.corona)
                     .into(bigImage);
+            long id=helper.addPlace(article.getTitle(),article.getAuthor(),article.getDescription());
+            databaseID= (int) id;
 
         }
     }

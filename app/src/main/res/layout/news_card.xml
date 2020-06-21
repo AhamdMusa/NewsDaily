@@ -41,7 +41,7 @@
                 android:textColor="#fff"
                 android:fontFamily="@font/abril_fatface"
                 android:padding="5dp"
-                android:textSize="20sp"/>
+                android:textSize="15sp"/>
             </LinearLayout>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
@@ -87,7 +87,7 @@
                         android:padding="5dp"
                         android:text="RGEWR"
                         android:textAlignment="viewEnd"
-                        android:textSize="30sp" />
+                        android:textSize="15sp" />
                 </LinearLayout>
             </RelativeLayout>
             <LinearLayout
